@@ -1,22 +1,24 @@
 {
-  "name": "snowman",
-  "version": "3.0.0",
-  "description": "An advanced story format for authors more experienced with HTML, CSS, and JavaScript. See its <a href='https://videlais.github.io/snowman/#/' target='_blank' rel='noopener noreferrer'>documentation</a>.",
+  "name": "iceman",
+  "version": "3.0.0-1",
+  "description": "An advanced story format at low temperature for authors more experienced with HTML, CSS, and JavaScript. See its <a href='https://videlais.github.io/snowman/#/' target='_blank' rel='noopener noreferrer'>original documentation</a>.",
   "license": "MIT",
-  "repository": "https://github.com/videlais/snowman/",
+  "repository": "https://github.com/jenkin/iceman/",
   "scripts": {
     "test": "jest --coverage",
     "lint": "eslint src/*.js test/*.js --fix",
     "build": "webpack",
     "package": "npm run build && node build-format.js",
     "visual-test": "npm run package && extwee -s dist/format.js -i visual_testing/index.twee -c -o visual_testing/index.html && open-cli visual_testing/index.html",
-    "all": "npm run lint && npm run package && npm run test"
+    "all": "npm run lint && npm run package && npm run test",
+    "publish": "git push origin `git subtree split --prefix dist develop`:gh-pages --force"
   },
   "keywords": [
     "twine",
     "storyformat"
   ],
-  "author": "Dan Cox",
+  "author": "Alessio Cimarelli <alessio.cimarelli@gmail.com> (https://about.me/alessio.cimarelli)",
+  "contributors": ["Dan Cox"],
   "dependencies": {
     "ejs": "^3.1.8",
     "jquery": "^3.6.0",
