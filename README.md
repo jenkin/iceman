@@ -1,15 +1,19 @@
-# Snowman
+# Iceman
 
-![Node.js CI](https://github.com/videlais/snowman/workflows/Node.js%20CI/badge.svg) [![codecov](https://codecov.io/gh/videlais/snowman/branch/master/graph/badge.svg)](https://codecov.io/gh/videlais/snowman)
+Iceman is an advanced Twine 2 story format at low temperature designed for people who already know JavaScript and CSS.
+It is a fork of [Snowman](https://github.com/videlais/snowman/) story format originally created by Chris Klimas and currently maintained by Dan Cox.
 
-Snowman is an advanced Twine 2 story format designed for people who already know JavaScript and CSS. It was originally created by Chris Klimas and is currently maintained by Dan Cox.
+The first story built on top of Iceman is [Cerveeelliii](https://github.com/jenkin/cerveeelliii), now under development.
 
-## What does Snowman offer?
+## Difference from Snowman
 
-Snowman does not use macros. Instead, it provides template tags, `<% ... %>`, and a JavaScript API for accessing and manipulating the current story and its passages.
+Iceman version will follow Snowman (ie. `3.0.0`) plus a counter of new sub-releases (ie. `3.0.0-1`).
 
-It also includes the JavaScript library [jQuery](https://jquery.com/).
+## Building
 
-## Want to learn more?
+Run `npm install` to install dependencies.
 
-The [official Snowman documentation](https://videlais.github.io/snowman/#/) has more details.
+`npm run build` will create a Twine 2-ready story format under `dist/`.
+
+To check for style errors, run `npm run lint`.
+To run unit tests, run `npm run test`.
