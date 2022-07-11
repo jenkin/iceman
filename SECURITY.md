@@ -10,4 +10,4 @@
 
 ## Reporting a Vulnerability
 
-Please report any problems using GitHub's [Issues interface](https://github.com/videlais/snowman/issues) with as detail as possible.
+Please report any problems using GitHub's [Issues interface](https://github.com/jenkin/iceman/issues) with as detail as possible.
