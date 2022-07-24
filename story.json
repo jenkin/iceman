@@ -1,6 +1,6 @@
 {
     "name": "Iceman",
-    "version": "3.0.0-1",
+    "version": "3.0.0-2",
     "description": "An advanced story format at low temperature for authors more experienced with HTML, CSS, and JavaScript. See its <a href='https://videlais.github.io/snowman/#/' target='_blank' rel='noopener noreferrer'>original documentation</a>.",
     "proofing": false,
     "license": "MIT",

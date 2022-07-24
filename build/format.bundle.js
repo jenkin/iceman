@@ -31191,19 +31191,19 @@ class Markdown {
   static parse (text) {
     const rules = [
       // [[rename|destination][onclick]]
-      [/\[\[(.*?)\|(.*?)\](?:\[(.*?)\])?\]/g, (m, p1, p2, p3 = '') => `<tw-link role="link" onclick="${p3.replaceAll('s.', 'window.Story.state.')}" data-passage="${p2}">${p1}</tw-link>`],
+      [/\[\[(.*?)\|(.*?)\](?:\[(.*?)\])?\]/g, (m, p1, p2, p3 = '') => `<tw-link role="link" onclick="${p3.replaceAll('s.', 'window.Story.store.')}" data-passage="${p2}">${p1}</tw-link>`],
       // [[rename|destination]]
       // [/\[\[(.*?)\|(.*?)\]\]/g, '<tw-link role="link" data-passage="$2">$1</tw-link>'],
       // [[rename->dest][onclick]]
-      [/\[\[(.*?)->(.*?)\](?:\[(.*?)\])?\]/g, (m, p1, p2, p3 = '') => `<tw-link role="link" onclick="${p3.replaceAll('s.', 'window.Story.state.')}" data-passage="${p2}">${p1}</tw-link>`],
+      [/\[\[(.*?)->(.*?)\](?:\[(.*?)\])?\]/g, (m, p1, p2, p3 = '') => `<tw-link role="link" onclick="${p3.replaceAll('s.', 'window.Story.store.')}" data-passage="${p2}">${p1}</tw-link>`],
       // [[rename->dest]]
       // [/\[\[(.*?)->(.*?)\]\]/g, '<tw-link role="link" data-passage="$2">$1</tw-link>'],
       // [[dest<-rename][onclick]]
-      [/\[\[(.*?)<-(.*?)\](?:\[(.*?)\])?\]/g, (m, p1, p2, p3 = '') => `<tw-link role="link" onclick="${p3.replaceAll('s.', 'window.Story.state.')}" data-passage="${p1}">${p2}</tw-link>`],
+      [/\[\[(.*?)<-(.*?)\](?:\[(.*?)\])?\]/g, (m, p1, p2, p3 = '') => `<tw-link role="link" onclick="${p3.replaceAll('s.', 'window.Story.store.')}" data-passage="${p1}">${p2}</tw-link>`],
       // [[dest<-rename]]
       // [/\[\[(.*?)<-(.*?)\]\]/g, '<tw-link role="link" data-passage="$1">$2</tw-link>'],
       // [[destination][onclick]]
-      [/\[\[(.*?)\](?:\[(.*?)\])?\]/g, (m, p1, p2 = '') => `<tw-link role="link" onclick="${p2.replaceAll('s.', 'window.Story.state.')}" data-passage="${p1}">${p1}</tw-link>`]
+      [/\[\[(.*?)\](?:\[(.*?)\])?\]/g, (m, p1, p2 = '') => `<tw-link role="link" onclick="${p2.replaceAll('s.', 'window.Story.store.')}" data-passage="${p1}">${p1}</tw-link>`]
       // [[destination]]
       // [/\[\[(.*?)\]\]/g, '<tw-link role="link" data-passage="$1">$1</tw-link>']
     ];
@@ -31966,6 +31966,14 @@ class Story {
     // Overwrite current tags
     this.passageElement.attr('tags', passage.tags);
 
+    /**
+     * Triggered when the story starts.
+     *
+     * @event State#start
+     * @type {string}
+     */
+    State.events.emit('start', passage);
+
     // Get passage source.
     const passageSource = this.include(passage.name);
 
@@ -31989,12 +31997,12 @@ class Story {
     });
 
     /**
-     * Triggered when the story starts.
+     * Triggered when a passage is shown.
      *
-     * @event State#start
+     * @event State#show
      * @type {string}
      */
-    State.events.emit('start', passage.name);
+    State.events.emit('show', passage, true);
   }
 
   /**
@@ -32089,7 +32097,7 @@ class Story {
      * @event State#show
      * @type {string}
      */
-    State.events.emit('show', passage.name);
+    State.events.emit('show', passage, false);
   }
 
   /**

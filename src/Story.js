@@ -245,6 +245,14 @@ class Story {
     // Overwrite current tags
     this.passageElement.attr('tags', passage.tags);
 
+    /**
+     * Triggered when the story starts.
+     *
+     * @event State#start
+     * @type {string}
+     */
+    State.events.emit('start', passage);
+
     // Get passage source.
     const passageSource = this.include(passage.name);
 
@@ -268,12 +276,12 @@ class Story {
     });
 
     /**
-     * Triggered when the story starts.
+     * Triggered when a passage is shown.
      *
-     * @event State#start
+     * @event State#show
      * @type {string}
      */
-    State.events.emit('start', passage.name);
+    State.events.emit('show', passage, true);
   }
 
   /**
@@ -368,7 +376,7 @@ class Story {
      * @event State#show
      * @type {string}
      */
-    State.events.emit('show', passage.name);
+    State.events.emit('show', passage, false);
   }
 
   /**
